@@ -7,7 +7,7 @@ while coin_1 > 0 or coin_2 > 0:
         break
     pirate_1 = random.randint(1, 6)
     pirate_2 = random.randint(1, 6)
-    if pirate1 > pirate2:
+    if pirate_1 > pirate_2:
         coin_1 += 1
         coin_2 -= 1
         print("Выиграл первый пират")
