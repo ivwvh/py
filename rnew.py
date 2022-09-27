@@ -13,6 +13,7 @@ if not name: name= "Илья"
 #cycle
 while game:
     if (way_1 or way_2 or way_3) and scene == "":
+        scene = ""
         print("Вы находитесь на перекрестке трех дорог")
         if way_1:
             print("Введите 1 что бы.")
@@ -38,4 +39,5 @@ while game:
 
     #выбор2
     #выбор3
+
 
