@@ -1,21 +1,43 @@
-iimport random
+import random
 import os
 
 #настройка
 way_1 = True
-way_2=True
-way_3=True
-game=True
-scene=""
+way_2 = True
+way_3 = True
+game = True
+scene = ""
+battle = True
+
+playerdamage = random.randint(1,11)
+robberdamage = random.randint(1,5)
+swordtype = ""
+robberhp = 10
+playerhp = 20
+exp = 0
+
+
+#выбор типа оружия
+if playerdamage == (1, 5):
+    swordtype = "не заточенный"
+if playerdamage == (6, 10):
+    swordtype == "плохо заточенный"
+if playerdamage == (11):
+    swordtype = "хорошо заточенный"
+
 #имя
-name=input('Введите имя: ')
-if not name: name= "Илья"
+
+name = input('Введите имя: ')
+if not name : name = "Илья"
+
 #cycle
 while game:
+
     if (way_1 or way_2 or way_3) and scene == "":
         os.system("cls")
         scene = ""
         print("Вы находитесь на перекрестке трех дорог")
+        print(f"Возле одной из дорог вы видите {swordtype} меч ")
         if way_1:
             print("[1] Проехать налево.")
         if way_2:
@@ -32,21 +54,42 @@ while game:
     if way_1 and scene == "1":
         os.system("cls")
         print("Разбойники ")
-        print("[1]Правильный выбор")
-        print("[2]Неправильный выбор ")
+        print("[1]Биться")
+        print("[2]Не биться ")
+
 
         choice = input("Выберите ответ: ")
-        if choice == "1" or choice== "2" :
-            scene += choice
-    #концовки для первого выбора
-    if way_1 and scene == "11":
-        input ("Концовка хорошая")
-        scene = ""
-        os.system("cls")
-        way_1 = False
+        if choice == "1" and way_1 == True:
+            while battle:
+                print("Жизни разбойников:", robberhp)
+                print("Ваши жизни", playerhp)
+                input("Нажмите ENTER что бы сделать ход")
+                playerhp = playerhp - robberdamage
+                robberhp = robberhp - playerdamage
+                print(f"{name} нанес", playerdamage)
+                print("Разбойники нанесли ",robberdamage)
+                input("Нажмите ENTER что бы продолжить")
+                os.system("cls")
+                if playerhp == 0 or playerhp < 0:
+                    input("Вы проиграли")
+                    scene = ""
+                    break
+
+                if robberhp == 0 or robberhp < 0:
+                    input("Вы победили")
+                    battle= False
+                    way_1 = False
+                    scene = ""
+
+        if choice== "2":
+            input("Вы решили пройти мимо")
+            way_1 = False
+            scene = ""
+
+
 
     if way_1 and scene == "12":
-        input ("Концовка плохая")
+        input ("Вы решили пройти мимо них")
         scene = ""
 
     #выбор2
