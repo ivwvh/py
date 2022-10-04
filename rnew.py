@@ -9,20 +9,21 @@ game = True
 scene = ""
 battle = True
 
-playerdamage = random.randint(1,11)
+playerdamage = random.randint(1,10)
 robberdamage = random.randint(1,5)
 swordtype = ""
 robberhp = 10
 playerhp = 20
 exp = 0
+robbername = "Жран Борзой"
 
 
 #выбор типа оружия
-if playerdamage == (1, 5):
+if playerdamage < 6:
     swordtype = "не заточенный"
-if playerdamage == (6, 10):
+if playerdamage < 10:
     swordtype == "плохо заточенный"
-if playerdamage == (11):
+if playerdamage == 10:
     swordtype = "хорошо заточенный"
 
 #имя
@@ -53,21 +54,22 @@ while game:
     #выбор1
     if way_1 and scene == "1":
         os.system("cls")
-        print("Разбойники ")
+        print("Вы проходите лагеря разбойников")
         print("[1]Биться")
         print("[2]Не биться ")
 
 
-        choice = input("Выберите ответ: ")
+        choice = input("Выберите ответ:")
         if choice == "1" and way_1 == True:
+            print(f"Вас встретил {robbername} ")
             while battle:
-                print("Жизни разбойников:", robberhp)
+                print(f"Жизни {robbername} :", robberhp)
                 print("Ваши жизни", playerhp)
                 input("Нажмите ENTER что бы сделать ход")
                 playerhp = playerhp - robberdamage
                 robberhp = robberhp - playerdamage
-                print(f"{name} нанес", playerdamage)
-                print("Разбойники нанесли ",robberdamage)
+                print(f"{name} нанес: ", playerdamage)
+                print(f"{robbername} нанес вам: ",robberdamage)
                 input("Нажмите ENTER что бы продолжить")
                 os.system("cls")
                 if playerhp == 0 or playerhp < 0:
