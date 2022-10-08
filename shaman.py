@@ -23,6 +23,8 @@ while shaman_event and tries != 0:
                 input("Нажмите любую клавишу для продолжения")
                 os.system("cls")
             else:
-                shamanevent = False
+                shaman_event = False
                 print('Вы победили')
 
+
+input('Нажмите любую клавишу чтобы выйти')
